@@ -16,14 +16,14 @@ namespace TelephoneDirectoryApi.Controllers
         };
         // GET: api/<TelephoneDirectoryController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public TelephoneDirectoryModel Get()
         {
-            return new string[] { "value1", "value2" };
+            return telephoneDirectories.Last();
         }
 
         // GET api/<TelephoneDirectoryController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{town}")]
+        public string Get(string town)
         {
             return "value";
         }
@@ -31,18 +31,6 @@ namespace TelephoneDirectoryApi.Controllers
         // POST api/<TelephoneDirectoryController>
         [HttpPost]
         public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<TelephoneDirectoryController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<TelephoneDirectoryController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
         {
         }
     }

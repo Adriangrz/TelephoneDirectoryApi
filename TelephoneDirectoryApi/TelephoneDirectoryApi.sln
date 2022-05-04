@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectoryApi", "TelephoneDirectoryApi\TelephoneDirectoryApi.csproj", "{6FDAD3A9-05E9-4DED-80CD-49714B729590}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelephoneDirectoryApi", "TelephoneDirectoryApi\TelephoneDirectoryApi.csproj", "{6FDAD3A9-05E9-4DED-80CD-49714B729590}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectoryApi.Models", "TelephoneDirectoryApi.Models\TelephoneDirectoryApi.Models.csproj", "{F88C09F8-F08D-4CC1-B2FD-4E846ACCAC28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelephoneDirectoryApi.Models", "TelephoneDirectoryApi.Models\TelephoneDirectoryApi.Models.csproj", "{F88C09F8-F08D-4CC1-B2FD-4E846ACCAC28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelephoneDirectoryApi.Database", "TelephoneDirectoryApi.Database\TelephoneDirectoryApi.Database.csproj", "{B04E8FC2-0A15-4D12-8CF5-43DB3F85DBBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F88C09F8-F08D-4CC1-B2FD-4E846ACCAC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F88C09F8-F08D-4CC1-B2FD-4E846ACCAC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F88C09F8-F08D-4CC1-B2FD-4E846ACCAC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B04E8FC2-0A15-4D12-8CF5-43DB3F85DBBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B04E8FC2-0A15-4D12-8CF5-43DB3F85DBBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B04E8FC2-0A15-4D12-8CF5-43DB3F85DBBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B04E8FC2-0A15-4D12-8CF5-43DB3F85DBBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
