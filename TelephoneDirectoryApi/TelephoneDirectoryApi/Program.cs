@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TelephoneDirectoryApi.Database;
+using TelephoneDirectoryApi.Database.Repository;
+using TelephoneDirectoryApi.Database.Repository.Interfaces;
+using TelephoneDirectoryApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<IGenericRepositoryy<EntryInTelephoneDirectory>, GenericRepository<EntryInTelephoneDirectory>>();
 
 var app = builder.Build();
 

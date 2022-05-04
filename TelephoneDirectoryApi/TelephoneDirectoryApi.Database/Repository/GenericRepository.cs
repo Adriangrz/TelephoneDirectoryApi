@@ -48,7 +48,7 @@ namespace TelephoneDirectoryApi.Database.Repository
             }
         }
 
-        public virtual async Task<T> GetBy(Expression<Func<T, bool>> predicate, string includeProperties = "")
+        public virtual async Task<T?> GetBy(Expression<Func<T, bool>> predicate, string includeProperties = "")
         {
             IQueryable<T> query = _dbSet;
 
@@ -57,7 +57,7 @@ namespace TelephoneDirectoryApi.Database.Repository
             {
                 query = query.Include(includeProperty);
             }
-            return await query.FirstAsync(predicate); ;
+            return await query.FirstOrDefaultAsync(predicate);
         }
 
         public virtual async Task Insert(T entity)
@@ -90,9 +90,9 @@ namespace TelephoneDirectoryApi.Database.Repository
             await _context.SaveChangesAsync();
         }
 
-        public Task<T> GetRecenltyAdded()
+        public Task<T?> GetRecenltyAdded()
         {
-            return _dbSet.LastAsync();
+            return _dbSet.LastOrDefaultAsync();
         }
     }
 }

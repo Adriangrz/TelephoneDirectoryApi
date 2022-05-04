@@ -21,7 +21,7 @@ namespace TelephoneDirectoryApi.Controllers
         }
         // GET: api/<TelephoneDirectoryController>
         [HttpGet]
-        public async Task<EntryInTelephoneDirectory> Get()
+        public async Task<EntryInTelephoneDirectory?> Get()
         {
             return await _repositoryTelephoneDirectory.GetRecenltyAdded();
         }
@@ -30,7 +30,7 @@ namespace TelephoneDirectoryApi.Controllers
         [HttpGet("{city}")]
         public async Task<IEnumerable<EntryInTelephoneDirectory>> Get(string city)
         {
-            return await _repositoryTelephoneDirectory.Get(x=>x.City == city);
+            return await _repositoryTelephoneDirectory.Get(x=>x.City.ToLower() == city.ToLower());
         }
 
         // POST api/<TelephoneDirectoryController>
