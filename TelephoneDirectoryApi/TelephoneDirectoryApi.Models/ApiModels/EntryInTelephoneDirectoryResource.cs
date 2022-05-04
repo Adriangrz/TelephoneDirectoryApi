@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace TelephoneDirectoryApi.Models
 {
-    public class EntryInTelephoneDirectory
+    public class EntryInTelephoneDirectoryResource
     {
-        public Guid Id { get; set; }
         public int Number { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
