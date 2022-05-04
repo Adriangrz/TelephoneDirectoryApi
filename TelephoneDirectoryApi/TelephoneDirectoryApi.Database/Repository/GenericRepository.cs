@@ -89,5 +89,10 @@ namespace TelephoneDirectoryApi.Database.Repository
         {
             await _context.SaveChangesAsync();
         }
+
+        public Task<T> GetRecenltyAdded()
+        {
+            return _dbSet.LastAsync();
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using TelephoneDirectoryApi.Database.Repository.Interfaces;
+using TelephoneDirectoryApi.Extensions;
 using TelephoneDirectoryApi.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,29 +12,40 @@ namespace TelephoneDirectoryApi.Controllers
     [ApiController]
     public class TelephoneDirectoryController : ControllerBase
     {
-        List<TelephoneDirectoryModel> telephoneDirectories = new List<TelephoneDirectoryModel>()
+        private readonly IGenericRepositoryy<EntryInTelephoneDirectory> _repositoryTelephoneDirectory;
+        private readonly IMapper _mapper;
+        public TelephoneDirectoryController(IGenericRepositoryy<EntryInTelephoneDirectory> repositoryTelephoneDirectory, IMapper mapper)
         {
-            new TelephoneDirectoryModel() { Id = Guid.NewGuid(), Name = "Antek", Surname = "Kowalski", City="Warszawa", Street="Wodna", StreetNumber="35b", Number=455433212},
-            new TelephoneDirectoryModel() { Id = Guid.NewGuid(), Name = "Marek", Surname = "Nowak", City="Bielsko-Biała", Street="Kryształowa", StreetNumber="34a", Number=123456788},
-        };
+            _repositoryTelephoneDirectory = repositoryTelephoneDirectory;
+            _mapper = mapper;
+        }
         // GET: api/<TelephoneDirectoryController>
         [HttpGet]
-        public TelephoneDirectoryModel Get()
+        public async Task<EntryInTelephoneDirectory> Get()
         {
-            return telephoneDirectories.Last();
+            return await _repositoryTelephoneDirectory.GetRecenltyAdded();
         }
 
-        // GET api/<TelephoneDirectoryController>/5
-        [HttpGet("{town}")]
-        public string Get(string town)
+        // GET api/<TelephoneDirectoryController>/Warszawa
+        [HttpGet("{city}")]
+        public async Task<IEnumerable<EntryInTelephoneDirectory>> Get(string city)
         {
-            return "value";
+            return await _repositoryTelephoneDirectory.Get(x=>x.City == city);
         }
 
         // POST api/<TelephoneDirectoryController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] EntryInTelephoneDirectoryResource value)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
+            var entryInTelephoneDirectory = _mapper.Map<EntryInTelephoneDirectoryResource, EntryInTelephoneDirectory>(value);
+
+            _repositoryTelephoneDirectory.Insert(entryInTelephoneDirectory);
+            _repositoryTelephoneDirectory.Save();
+
+            var entryInTelephoneDirectoryResource = _mapper.Map<EntryInTelephoneDirectory, EntryInTelephoneDirectoryResource>(entryInTelephoneDirectory);
+            return Ok(entryInTelephoneDirectoryResource);
         }
     }
 }
