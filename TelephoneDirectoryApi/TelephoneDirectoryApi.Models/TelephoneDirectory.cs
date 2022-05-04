@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TelephoneDirectoryApi.Models
 {
-    public class TelephoneDirectoryModel
+    public class TelephoneDirectory
     {
         public Guid Id { get; set; }
         public int Number { get; set; }
